@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Vegetable
+  - GameOverObject
+  - Box
+  - Block
   layers:
   - Default
   - TransparentFX
