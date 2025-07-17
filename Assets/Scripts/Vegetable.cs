@@ -5,6 +5,7 @@ using UnityEngine;
 public class Vegetable : MonoBehaviour
 {
     bool collisionFlag;
+    //bool scrollFlag;
     //public Transform[] blockPos;
     //public Transform[] sensorPoints;
     //LineRenderer linerend;
@@ -58,18 +59,36 @@ public class Vegetable : MonoBehaviour
             GameController.gameState = GameState.gameover;
             Destroy(gameObject);
         }
+
+        //if (collision.gameObject.CompareTag("CameraScroll"))
+        //{
+        //    scrollFlag = true;
+        //}
     }
 
     void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Box") || collision.gameObject.CompareTag("Vegetable"))
+        if (collision.gameObject.CompareTag("Box") || collision.gameObject.CompareTag("droppedVegetable"))
         {
             collisionFlag = true;
         }
     }
 
+    //void OnCollisionExit2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("CameraScroll"))
+    //    {
+    //        scrollFlag = false;
+    //    }
+    //}
+
     public bool CollisionCheck()
     {
         return collisionFlag;
     }
+
+    //public bool ScrollCheck()
+    //{
+    //    return scrollFlag;
+    //}
 }
