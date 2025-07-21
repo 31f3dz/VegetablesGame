@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class CameraScroll : MonoBehaviour
 {
-    private HashSet<Collider2D> touchingObjects = new HashSet<Collider2D>();
-
-    bool flag;
+    HashSet<Collider2D> touchingObjects = new HashSet<Collider2D>();
+    bool countFlag;
 
     // Start is called before the first frame update
     void Start()
@@ -19,18 +18,11 @@ public class CameraScroll : MonoBehaviour
     {
         if (touchingObjects.Count >= 1)
         {
-            flag = true;
-            //effectFlag = true;
-
-            //if (!effectFlag)
-            //{
-            //    particleSystem.Play();
-            //    effectFlag = true;
-            //}
+            countFlag = true;
         }
         else
         {
-            flag = false;
+            countFlag = false;
         }
     }
 
@@ -50,8 +42,8 @@ public class CameraScroll : MonoBehaviour
         }
     }
 
-    public bool Flag()
+    public bool FlagCheck()
     {
-        return flag;
+        return countFlag;
     }
 }

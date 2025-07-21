@@ -4,19 +4,16 @@ using UnityEngine;
 
 public class ColliderCheck : MonoBehaviour
 {
-    public ParticleSystem particleSystem;
-    bool effectFlag;
-    //bool flag;
-    //public static int count;
+    HashSet<Collider2D> touchingObjects = new HashSet<Collider2D>();
     bool countFlag;
 
-    private HashSet<Collider2D> touchingObjects = new HashSet<Collider2D>();
-
-    public int TouchingCount => touchingObjects.Count;
+    public ParticleSystem particleSystem;
+    bool effectFlag;
 
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
@@ -25,46 +22,12 @@ public class ColliderCheck : MonoBehaviour
         if (touchingObjects.Count >= 9)
         {
             countFlag = true;
-            //effectFlag = true;
-
-            //if (!effectFlag)
-            //{
-            //    particleSystem.Play();
-            //    effectFlag = true;
-            //}
         }
         else
         {
             countFlag = false;
         }
     }
-
-    //void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Block"))
-    //    {
-    //        if (collision.gameObject.GetComponent<Block>().FlagCheck())
-    //        {
-    //            count++;
-    //        }
-    //    }
-    //}
-
-    //void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Block"))
-    //    {
-    //        if (!collision.gameObject.GetComponent<Block>().FlagCheck())
-    //        {
-    //            count--;
-    //        }
-    //    }
-    //}
-
-    //void OnTriggerStay2D(Collider2D collision)
-    //{
-
-    //}
 
     void OnTriggerEnter2D(Collider2D other)
     {

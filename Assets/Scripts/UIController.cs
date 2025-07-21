@@ -2,66 +2,98 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
+    public VegetablesGenerator vg;
+
     public GameObject resultPanel;
     public TextMeshProUGUI resultText;
-
-    public float startTime = 180.0f; // カウントダウンの基準
-    public float displayTime; // UIと連動する残時間
-    float pastTime; // 経過時間
-    //bool isTimeOver; // カウントが0になったかどうか ※0なら止める
-    public TextMeshProUGUI timeText;
 
     int currentPoint; // UIが管理しているポイント
     public TextMeshProUGUI pointText;
 
+    int highScore;
+    public TextMeshProUGUI highScorePoint;
+
+    public float startTime = 180.0f; // カウントダウンの基準
+    float displayTime; // UIと連動する残時間
+    float pastTime; // 経過時間
+    public TextMeshProUGUI timeText;
+
+    public Image image;
+    public Sprite[] sprites;
+
     // Start is called before the first frame update
     void Start()
     {
+        highScore = PlayerPrefs.GetInt("Score");
+        highScorePoint.text = highScore.ToString();
+
         displayTime = startTime;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (isTimeOver)
-        //{
-        //    return;
-        //}
-
         if (GameController.gameState == GameState.playing)
         {
-            pastTime += Time.deltaTime;
-
-            displayTime = startTime - pastTime;
-
-            if (displayTime <= 0)
-            {
-                displayTime = 0;
-                //isTimeOver = true;
-                GameController.gameState = GameState.timeover;
-            }
-
-            timeText.text = Mathf.Ceil(displayTime).ToString();
-
             if (currentPoint != GameController.stagePoints)
             {
                 currentPoint = GameController.stagePoints;
                 pointText.text = currentPoint.ToString();
             }
+
+            pastTime += Time.deltaTime;
+            displayTime = startTime - pastTime;
+
+            if (displayTime <= 0.0f)
+            {
+                displayTime = 0.0f;
+                GameController.gameState = GameState.timeover;
+            }
+
+            timeText.text = Mathf.Ceil(displayTime).ToString();
+
+            int rand = vg.NextVegetable();
+
+            if (rand != -1 || rand != vg.NextVegetable())
+            {
+                image.sprite = sprites[rand];
+            }
+
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                Pause();
+            }
         }
 
-        if (GameController.gameState == GameState.timeover)
+        if (GameController.gameState == GameState.timeover || GameController.gameState == GameState.gameover)
         {
-            resultText.text = "TimeUp";
+            if (GameController.stagePoints > highScore)
+            {
+                highScore = GameController.stagePoints;
+                PlayerPrefs.SetInt("Score", highScore);
+            }
+
+            highScorePoint.text = highScore.ToString();
             resultPanel.SetActive(true);
         }
+    }
 
-        if (GameController.gameState == GameState.gameover)
+    public void Pause()
+    {
+        if (resultPanel.activeSelf)
         {
-            resultText.text = "GameOver";
+            Time.timeScale = 1.0f;
+            resultText.text = "Result";
+            resultPanel.SetActive(false);
+        }
+        else
+        {
+            Time.timeScale = 0.0f;
+            resultText.text = "Pause";
             resultPanel.SetActive(true);
         }
     }
