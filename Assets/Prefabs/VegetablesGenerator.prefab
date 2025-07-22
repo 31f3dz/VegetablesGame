@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2948703063045934433
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7932886159120348839}
+  - component: {fileID: 200859528045499152}
+  m_Layer: 0
+  m_Name: VegetablesGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7932886159120348839
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2948703063045934433}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 4.75, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &200859528045499152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2948703063045934433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0bbe4c2e58ac55469f161cdc4d9bc15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vegetables:
+  - {fileID: 4034605448509397903, guid: ddd2f88bdbffd92469cafc80f33bc357, type: 3}
+  - {fileID: 1446729203213306980, guid: 7968124f73d0aa44682296afe8a0456a, type: 3}
+  - {fileID: 4638838966694332608, guid: a1dafdfba190d9844a269273724d3198, type: 3}
+  - {fileID: 3765830648099943247, guid: c837538035141af4ab6d3fc9cc5b80df, type: 3}
+  - {fileID: 5207279834989287540, guid: 19d87c7322d696243a40a91781199e80, type: 3}
+  - {fileID: 5299019172054742159, guid: 92e605bbe0ce73e4ab77f6d53dad8f56, type: 3}
+  droppedVegetables: {fileID: 0}
+  colliderCheckList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  cameraScroll: {fileID: 0}
+  moveSpeed: 3
+  rotateSpeed: 180
+  touchPoint: 500
+  scrollPoint: 3000
