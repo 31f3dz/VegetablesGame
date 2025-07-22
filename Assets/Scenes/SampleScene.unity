@@ -5999,6 +5999,8 @@ MonoBehaviour:
   cameraScroll: {fileID: 421333104}
   moveSpeed: 3
   rotateSpeed: 180
+  touchPoint: 500
+  scrollPoint: 3000
 --- !u!1 &1718854553
 GameObject:
   m_ObjectHideFlags: 0

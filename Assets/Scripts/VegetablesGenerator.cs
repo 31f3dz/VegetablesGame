@@ -27,6 +27,11 @@ public class VegetablesGenerator : MonoBehaviour
     public float rotateSpeed = 90.0f;
     float moveLimit = 2.5f;
 
+    public int touchPoint = 500;
+    int touchCount;
+    public int scrollPoint = 3000;
+    int scrollCount;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -80,7 +85,8 @@ public class VegetablesGenerator : MonoBehaviour
                 if (colliderCheck.FlagCheck() && !colliderCheck.EffectCheck())
                 {
                     colliderCheck.EffectPlay();
-                    GameController.stagePoints += 1000;
+                    touchCount++;
+                    GameController.stagePoints += touchCount * touchPoint;
                 }
             }
 
@@ -148,7 +154,8 @@ public class VegetablesGenerator : MonoBehaviour
         }
         transform.position = new Vector3(transform.position.x, transform.position.y + defPos, transform.position.z);
         cameraScroll.gameObject.transform.position = new Vector3(cameraScroll.gameObject.transform.position.x, cameraScroll.gameObject.transform.position.y + defPos, cameraScroll.gameObject.transform.position.z);
-        GameController.stagePoints += 1500;
+        scrollCount++;
+        GameController.stagePoints += scrollCount * scrollPoint;
         yield return new WaitForSeconds(0.5f);
         scrollFlag = false;
         waitFlag = false;
